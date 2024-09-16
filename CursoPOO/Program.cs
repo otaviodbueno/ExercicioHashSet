@@ -1,29 +1,26 @@
 ﻿using System;
 using System.Globalization;
-using CursoPOO.Entities;
 
-try
+HashSet<int> codigos = new HashSet<int>();
+
+Console.WriteLine("Quantos cursos o professor leciona: ");
+int q = int.Parse(Console.ReadLine());
+
+for (int i = 0; i < q; i++)
 {
-    Console.WriteLine("Entre com os dados da conta: ");
-    Console.Write("Número: ");
-    int numeroDaConta = int.Parse(Console.ReadLine());
-    Console.Write("Nome: ");
-    string nome = Console.ReadLine();
-    Console.Write("Saldo inicial: ");
-    double saldoInicial = double.Parse(Console.ReadLine());
-    Console.Write("Limite de saque da conta: ");
-    int limiteSaque = int.Parse(Console.ReadLine());
+    Console.WriteLine($"Quantos estudantes no curso {i+1}?");
 
-    Console.Write("Valor desejado de saque: ");
-    double saque = double.Parse(Console.ReadLine());
+    int n = int.Parse(Console.ReadLine());
 
-    ContaBancaria conta = new ContaBancaria(numeroDaConta, nome, saldoInicial, limiteSaque, saque);
+    for (int j = 0; j < n; j++)
+    {
+        Console.Write("Digite o código do estudante: ");
+        int codigoEstudante = int.Parse(Console.ReadLine());
 
-    double saldoNovo = conta.RealizarSaque(saque);
+        codigos.Add(codigoEstudante);
+    }
 
-    Console.WriteLine($"Novo saldo: {saldoNovo}");
 }
-catch(DomainException ex)
-{
-    Console.WriteLine("Erro no saque: " + ex.Message);
-}
+
+Console.Write("TOTAL: ");
+Console.WriteLine(codigos.Count);
